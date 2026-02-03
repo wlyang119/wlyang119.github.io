@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steven | 摄影师个人网站</title>
+    <meta name="description" content="Steven摄影师个人作品展示，专注人像/Cosplay/古风/活动拍摄/企业宣传片/餐饮拍摄，承接商业拍摄、人像约拍、活动跟拍等业务">
+    <meta name="keywords" content="Steven,摄影师,人像摄影,Cosplay摄影,古风摄影,活动拍摄,企业宣传片,餐饮拍摄,PS修图,LR修图">
+    <!-- 引入图标库 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Noto Sans SC', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        /* 语言切换按钮 */
+        .lang-switch {
+            position: fixed;
+            top: 25px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+        .lang-btn {
+            padding: 8px 15px;
+            border: 2px solid #333;
+            background: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+        .lang-btn.active,
+        .lang-btn:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        /* 管理员登录界面 */
+        .login-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #fff;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .login-logo {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: #000;
+        }
+        .login-box {
+            background-color: #f5f5f5;
+            padding: 50px 40px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .login-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .login-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .login-input-group label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .login-input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        .login-input:focus {
+            border-color: #000;
+            outline: none;
+        }
+        .login-error {
+            color: #dc3545;
+            font-size: 14px;
+            text-align: center;
+            height: 20px;
+            line-height: 20px;
+        }
+        .login-btn {
+            padding: 15px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #333;
+        }
+        /* 导航栏 */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 999;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s;
+        }
+        .nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .logo a {
+            color: #000;
+        }
+        .nav-list {
+            display: flex;
+            gap: 40px;
+        }
+        .nav-item a {
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-item a:hover {
+            color: #666;
+        }
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        /* 首页Banner */
+        .banner {
+            height: 100vh;
+            background: url('https://picsum.photos/1920/1080?random=1') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 70px;
+            position: relative;
+        }
+        .banner-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+        }
+        .banner-content h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+        .banner-content p {
+            font-size: 20px;
+            letter-spacing: 3px;
+            margin-bottom: 50px;
+        }
+        .banner-btn {
+            padding: 15px 30px;
+            border: 2px solid #fff;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .banner-btn:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        /* 作品展示-管理功能仅登录后显示 */
+        .works {
+            padding: 120px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .section-title .line {
+            width: 80px;
+            height: 2px;
+            background-color: #333;
+            margin: 0 auto;
+        }
+        /* 上传按钮样式 - 管理员专属 */
+        .upload-box {
+            text-align: center;
+            margin-bottom: 40px;
+            display: none;
+        }
+        .upload-btn {
+            padding: 12px 30px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .upload-btn:hover {
+            background-color: #333;
+        }
+        .upload-input {
+            display: none;
+        }
+        .category-tip {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+        /* 作品分类筛选 - 主分类+子分类 */
+        .works-filter {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid #333;
+            background: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        /* 子分类筛选 */
+        .sub-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .sub-filter-btn {
+            padding: 8px 20px;
+            border: 1px solid #666;
+            background: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 20px;
+            color: #666;
+        }
+        .sub-filter-btn.active,
+        .sub-filter-btn:hover {
+            background-color: #666;
+            color: #fff;
+            border-color: #666;
+        }
+        /* 作品列表 */
+        .works-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .works-item {
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 400px;
+            transition: all 0.3s;
+        }
+        .works-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .works-item:hover img {
+            transform: scale(1.1);
+        }
+        /* 操作按钮-管理员专属，未登录隐藏 */
+        .item-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 10;
+            display: none;
+        }
+        .works-item:hover .item-actions {
+            opacity: 1;
+            display: flex;
+        }
+        .action-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .action-btn:hover {
+            background-color: #000;
+        }
+        .delete-btn {
+            background-color: rgba(220, 53, 69, 0.8);
+        }
+        .delete-btn:hover {
+            background-color: #dc3545;
+        }
+        .size-btn {
+            background-color: rgba(13, 110, 253, 0.8);
+        }
+        .size-btn:hover {
+            background-color: #0d6efd;
+        }
+        .text-btn {
+            background-color: rgba(255, 193, 7, 0.8);
+        }
+        .text-btn:hover {
+            background-color: #ffc107;
+        }
+        /* 尺寸设置弹窗 - 管理员专属 */
+        .size-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .size-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .size-content h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .size-inputs {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .size-group {
+            flex: 1;
+            text-align: left;
+        }
+        .size-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .size-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .size-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .size-btns button {
+            padding: 10px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .confirm-btn {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+        .confirm-btn:hover {
+            background-color: #0b5ed7;
+        }
+        .cancel-btn {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        .cancel-btn:hover {
+            background-color: #5c636a;
+        }
+        /* 作品文字信息 */
+        .work-info {
+            padding: 15px;
+            background-color: #fff;
+        }
+        .work-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            cursor: pointer;
+            outline: none;
+        }
+        .work-desc {
+            font-size: 14px;
+            color: #666;
+            cursor: pointer;
+            outline: none;
+        }
+        /* 作品大图预览弹窗 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-modal:hover {
+            color: #ccc;
+        }
+        /* 删除确认弹窗 - 管理员专属 */
+        .delete-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .delete-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .delete-content h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #dc3545;
+        }
+        .delete-content p {
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .delete-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .delete-btns button {
+            padding: 10px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .confirm-delete {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        .confirm-delete:hover {
+            background-color: #bb2d3b;
+        }
+        /* 提示弹窗样式 */
+        .tip-modal {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15 25px;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 4px;
+            z-index: 9999;
+            display: none;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        /* 关于我 */
+        .about {
+            padding: 120px 0;
+            background-color: #fff;
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+        .about-img {
+            flex: 1;
+            min-width: 350px;
+            position: relative;
+        }
+        .about-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        /* 头像替换按钮 - 管理员专属，未登录隐藏 */
+        .about-img .replace-btn {
+            display: none;
+            width: 40px;
+            height: 40px;
+            top: 10px;
+            left: 10px;
+            opacity: 1;
+            background-color: rgba(0,0,0,0.8);
+            position: absolute;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 350px;
+        }
+        .about-text h3 {
+            font-size: 30px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        .about-text p {
+            font-size: 16px;
+            line-height: 2;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        .about-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-item i {
+            font-size: 20px;
+            color: #000;
+        }
+        /* 约拍表单 */
+        .booking {
+            padding: 120px 0;
+            background-color: #f5f5f5;
+        }
+        .booking-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #eee;
+            font-size: 16px;
+            border-radius: 2px;
+            transition: border 0.3s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #333;
+            outline: none;
+        }
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            padding: 15px 40px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 2px;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #333;
+        }
+        /* 联系方式 */
+        .contact {
+            padding: 120px 0;
+            text-align: center;
+            background-color: #fff;
+        }
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .contact p {
+            font-size: 18px;
+            line-height: 2;
+            color: #666;
+            margin-bottom: 50px;
+        }
+        .contact-list {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        .contact-item {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .contact-item:hover {
+            background-color: #333;
+            color: #fff;
+        }
+        .contact-item i {
+            font-size: 30px;
+        }
+        /* 页脚 */
+        .footer {
+            padding: 40px 0;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+        }
+        .footer p {
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .lang-switch {
+                top: 15px;
+                right: 15px;
+            }
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            .nav-list {
+                display: none;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .banner-content h1 {
+                font-size: 40px;
+            }
+            .banner-content p {
+                font-size: 18px;
+            }
+            .about-content {
+                gap: 40px;
+            }
+            .works-list {
+                grid-template-columns: 1fr;
+            }
+            .booking-form {
+                padding: 30px 20px;
+            }
+            .upload-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .filter-btn {
+                padding: 8px 18px;
+                font-size: 14px;
+            }
+            .size-inputs {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .login-logo {
+                font-size: 36px;
+            }
+            .login-box {
+                padding: 40px 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .banner-content h1 {
+                font-size: 30px;
+            }
+            .section-title h2 {
+                font-size: 28px;
+            }
+            .about-text h3 {
+                font-size: 24px;
+            }
+            .tip-modal {
+                width: 90%;
+                right: 5%;
+            }
+            .login-logo {
+                font-size: 28px;
+            }
+        }
+        /* 管理员登录后显示所有操作功能 */
+        .admin-logged .upload-box,
+        .admin-logged .item-actions,
+        .admin-logged .about-img .replace-btn {
+            display: block;
+        }
+        .admin-logged .works-item:hover .item-actions {
+            display: flex;
+        }
+    </style>
+    <!-- 引入字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 语言切换按钮 -->
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="zh">中文</button>
+        <button class="lang-btn" data-lang="en">English</button>
+    </div>
+
+    <!-- 管理员登录界面 - 打开网站首先显示 -->
+    <div class="login-page" id="loginPage">
+        <div class="login-logo">STEVEN</div>
+        <div class="login-box">
+            <div class="login-title" data-i18n="login.title">管理员登录</div>
+            <form class="login-form" id="loginForm">
+                <div class="login-input-group">
+                    <label for="adminUser" data-i18n="login.username">账号</label>
+                    <input type="text" id="adminUser" class="login-input" data-i18n-placeholder="login.username.placeholder" required>
+                </div>
+                <div class="login-input-group">
+                    <label for="adminPwd" data-i18n="login.password">密码</label>
+                    <input type="password" id="adminPwd" class="login-input" data-i18n-placeholder="login.password.placeholder" required>
+                </div>
+                <div class="login-error" id="loginError"></div>
+                <button type="submit" class="login-btn" data-i18n="login.submit">登录</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">STEVEN</a>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#home" data-i18n="nav.home">首页</a></li>
+                <li class="nav-item"><a href="#works" data-i18n="nav.works">作品</a></li>
+                <li class="nav-item"><a href="#about" data-i18n="nav.about">关于我</a></li>
+                <li class="nav-item"><a href="#booking" data-i18n="nav.booking">约拍</a></li>
+                <li class="nav-item"><a href="#contact" data-i18n="nav.contact">联系</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页Banner -->
+    <section class="banner" id="home">
+        <div class="banner-mask"></div>
+        <div class="banner-content">
+            <h1>STEVEN</h1>
+            <p data-i18n="banner.desc">用镜头捕捉时光的温度</p>
+            <a href="#works" class="banner-btn" data-i18n="banner.btn">查看作品</a>
+        </div>
+    </section>
+
+    <!-- 作品展示 -->
+    <section class="works" id="works">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="works.title">我的作品</h2>
+                <div class="line"></div>
+            </div>
+
+            <!-- 作品上传按钮 - 管理员专属 -->
+            <div class="upload-box">
+                <button class="upload-btn" id="uploadBtn">
+                    <i class="fas fa-upload"></i> <span data-i18n="works.upload">上传作品图片</span>
+                </button>
+                <input type="file" class="upload-input" id="uploadInput" accept="image/jpg,image/png,image/webp" multiple>
+                <div class="category-tip" data-i18n="works.upload.tip">提示：先选择右侧分类，再上传图片会自动归类</div>
+            </div>
+
+            <!-- 主分类筛选 -->
+            <div class="works-filter">
+                <button class="filter-btn active" data-filter="all" data-i18n="works.filter.all">全部</button>
+                <button class="filter-btn" data-filter="portrait" data-i18n="works.filter.portrait">人像</button>
+                <button class="filter-btn" data-filter="documentary" data-i18n="works.filter.documentary">纪实</button>
+                <button class="filter-btn" data-filter="commercial" data-i18n="works.filter.commercial">商业</button>
+                <button class="filter-btn" data-filter="cosplay" data-i18n="works.filter.cosplay">Cosplay</button>
+                <button class="filter-btn" data-filter="comiccon" data-i18n="works.filter.comiccon">漫展场照</button>
+            </div>
+
+            <!-- 子分类筛选 -->
+            <div class="sub-filter" id="subFilter">
+                <!-- 子分类按钮将由JS动态生成 -->
+            </div>
+
+            <!-- 作品列表 -->
+            <div class="works-list" id="worksList">
+                <!-- Cosplay - 正片 -->
+                <div class="works-item" data-category="cosplay" data-subcategory="zhenpian">
+                    <img src="https://picsum.photos/800/1000?random=9" alt="Cosplay正片作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true" data-i18n="works.cosplay.zhenpian.title">Cosplay正片作品</div>
+                        <div class="work-desc" contenteditable="true" data-i18n="works.cosplay.zhenpian.desc">还原角色灵魂与精彩瞬间</div>
+                    </div>
+                </div>
+                <div class="works-item" data-category="cosplay" data-subcategory="zhenpian">
+                    <img src="https://picsum.photos/800/1000?random=10" alt="Cosplay正片作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true" data-i18n="works.cosplay.zhenpian.title">Cosplay正片作品</div>
+                        <div class="work-desc" contenteditable="true" data-i18n="works.cosplay.zhenpian.desc">还原角色灵魂与精彩瞬间</div>
+                    </div>
+                </div>
+                <!-- Cosplay - 后期合成 -->
+                <div class="works-item" data-category="cosplay" data-subcategory="houqi">
+                    <img src="https://picsum.photos/800/1000?random=11" alt="Cosplay后期合成作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true" data-i18n="works.cosplay.houqi.title">Cosplay后期合成作品</div>
+                        <div class="work-desc" contenteditable="true" data-i18n="works.cosplay.houqi.desc">专业后期合成，打造梦幻效果</div>
+                    </div>
+                </div>
+                <!-- 商业 - 婚礼 -->
+                <div class="works-item" data-category="commercial" data-subcategory="hunli">
+                    <img src="https://picsum.photos/800/1000?random=30" alt="婚礼摄影作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true" data-i18n="works.commercial.hunli.title">婚礼摄影作品</div>
+                        <div class="work-desc" contenteditable="true" data-i18n="works.commercial.hunli.desc">记录浪漫婚礼瞬间，定格幸福时刻</div>
+                    </div>
+                </div>
+                <!-- 商业 - 个人活动 -->
+                <div class="works-item" data-category="commercial" data-subcategory="geren">
+                    <img src="https://picsum.photos/800/1000?random=31" alt="个人活动摄影作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true" data-i18n="works.commercial.geren.title">个人活动摄影作品</div>
+                        <div class="work-desc" contenteditable="true" data-i18n="works.commercial.geren.desc">专业个人活动跟拍，记录精彩瞬间</div>
+                    </div>
+                </div>
+                <!-- 商业 - 商业活动 -->
+                <div class="works-item" data-category="commercial" data-subcategory="shangye">
+                    <img src="https://picsum.photos/800/1000?random=32" alt="商业活动摄影作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true" data-i18n="works.commercial.shangye.title">商业活动摄影作品</div>
+                        <div class="work-desc" contenteditable="true" data-i18n="works.commercial.shangye.desc">专业商业活动拍摄，展现品牌魅力</div>
+                    </div>
+                </div>
+                <!-- 漫展场照 - 场照 -->
+                <div class="works-item" data-category="comiccon" data-subcategory="changzhao">
+                    <img src="https://picsum.photos/800/1000?random=20" alt="漫展场照作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true" data-i18n="works.comiccon.changzhao.title">漫展场照作品</div>
+                        <div class="work-desc" contenteditable="true" data-i18n="works.comiccon.changzhao.desc">捕捉漫展精彩瞬间，定格现场氛围</div>
+                    </div>
+                </div>
+                <div class="works-item" data-category="comiccon" data-subcategory="changzhao">
+                    <img src="https://picsum.photos/800/1000?random=21" alt="漫展场照作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true" data-i18n="works.comiccon.changzhao.title">漫展场照作品</div>
+                        <div class="work-desc" contenteditable="true" data-i18n="works.comiccon.changzhao.desc">捕捉漫展精彩瞬间，定格现场氛围</div>
+                    </div>
+                </div>
+                <!-- 漫展场照 - 后期合成 -->
+                <div class="works-item" data-category="comiccon" data-subcategory="houqi">
+                    <img src="https://picsum.photos/800/1000?random=22" alt="漫展场照后期合成作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true" data-i18n="works.comiccon.houqi.title">漫展场照后期合成作品</div>
+                        <div class="work-desc" contenteditable="true" data-i18n="works.comiccon.houqi.desc">专业后期处理，提升场照质感</div>
+                    </div>
+                </div>
+                <!-- 人像作品 -->
+                <div class="works-item" data-category="portrait">
+                    <img src="https://picsum.photos/800/1000?random=2" alt="人像摄影作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true" data-i18n="works.portrait.title">人像摄影作品</div>
+                        <div class="work-desc" contenteditable="true" data-i18n="works.portrait.desc">记录人物真实情绪与瞬间</div>
+                    </div>
+                </div>
+                <!-- 纪实作品 -->
+                <div class="works-item" data-category="documentary">
+                    <img src="https://picsum.photos/800/1000?random=4" alt="纪实摄影作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true" data-i18n="works.documentary.title">纪实摄影作品</div>
+                        <div class="work-desc" contenteditable="true" data-i18n="works.documentary.desc">记录生活真实故事与瞬间</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品大图预览弹窗 -->
+    <div class="modal" id="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <!-- 尺寸设置弹窗 - 管理员专属 -->
+    <div class="size-modal" id="sizeModal">
+        <div class="size-content">
+            <h3 data-i18n="modal.size.title">设置作品尺寸</h3>
+            <div class="size-inputs">
+                <div class="size-group">
+                    <label for="widthInput" data-i18n="modal.size.width">宽度 (px)</label>
+                    <input type="number" id="widthInput" data-i18n-placeholder="modal.size.width.placeholder" min="200" max="800">
+                </div>
+                <div class="size-group">
+                    <label for="heightInput" data-i18n="modal.size.height">高度 (px)</label>
+                    <input type="number" id="heightInput" data-i18n-placeholder="modal.size.height.placeholder" min="200" max="1000">
+                </div>
+            </div>
+            <div class="size-btns">
+                <button class="confirm-btn" id="confirmSize" data-i18n="modal.confirm">确认</button>
+                <button class="cancel-btn" id="cancelSize" data-i18n="modal.cancel">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 删除确认弹窗 - 管理员专属 -->
+    <div class="delete-modal" id="deleteModal">
+        <div class="delete-content">
+            <h3 data-i18n="modal.delete.title">确认删除</h3>
+            <p data-i18n="modal.delete.desc">确定要删除该作品吗？此操作不可恢复！</p>
+            <div class="delete-btns">
+                <button class="confirm-delete" id="confirmDelete" data-i18n="modal.delete.confirm">确认删除</button>
+                <button class="cancel-btn" id="cancelDelete" data-i18n="modal.cancel">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 操作提示弹窗 -->
+    <div class="tip-modal" id="tipModal" data-i18n="modal.tip.success">操作成功！</div>
+
+    <!-- 关于我 -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="about.title">关于我</h2>
+                <div class="line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://picsum.photos/800/1000?random=8" alt="Steven摄影师">
+                    <button class="action-btn replace-btn">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <input type="file" class="replace-input" id="avatarReplace" accept="image/jpg,image/png,image/webp">
+                    
+                    <!-- 【已整合】封面图更换按钮 - 管理员专属 -->
+                    <button class="action-btn replace-btn" style="top: 60px; left: 10px;" id="bannerReplaceBtn">
+                        <i class="fas fa-image"></i>
+                    </button>
+                    <input type="file" class="replace-input" id="bannerReplace" accept="image/jpg,image/png,image/webp">
+                </div>
+                <div class="about-text">
+                    <h3 data-i18n="about.greeting">Hello, 我是Steven</h3>
+                    <p data-i18n="about.bio.1">执镜拍摄已有七年，深耕人像摄影领域，始终保持学习热忱，用心打磨每一项拍摄技艺。我擅长cosplay、古风以及各类活动拍摄，凭借丰富的实践经验，能够精准还原每一个角色的质感、细腻捕捉古风的雅致韵味，也能认真定格活动里每一个温暖又珍贵的高光瞬间，对待每一次拍摄，都始终保持严谨细致、高效专业的态度。</p>
+                    <p data-i18n="about.bio.2">除此之外，我也涉足企业宣传片、餐馆环境和菜品拍摄，善于运用光影凸显作品质感；熟练使用PS、LR进行修图剪辑，精通各类摄影设备，能够灵活适配不同的拍摄场景和光线需求，用专业能力不负每一份信任。</p>
+                    <p data-i18n="about.bio.3">拍摄时，我很愿意倾听大家的想法、耐心对接每一份需求，也会专业引导拍摄状态，让大家更放松、更出片。这些年我主导过多项拍摄项目，凭借扎实的专业能力获得了不少客户的认可与信赖。未来我也会继续秉持匠心、笃行致远，用专业和真诚，用心定格每一份美好与感动。</p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <i class="fas fa-camera"></i>
+                            <span data-i18n="about.skills">擅长：人像/Cosplay/古风/活动/企业宣传片/餐饮拍摄</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-award"></i>
+                            <span data-i18n="about.experience">7年摄影经验</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span data-i18n="about.phone">电话：5168003413</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span data-i18n="about.email">邮箱：wlyang119@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 约拍表单 -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="booking.title">预约拍摄</h2>
+                <div class="line"></div>
+            </div>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-group">
+                    <label for="name" data-i18n="booking.name">你的姓名</label>
+                    <input type="text" id="name" name="name" data-i18n-placeholder="booking.name.placeholder" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone" data-i18n="booking.phone">联系电话</label>
+                    <input type="tel" id="phone" name="phone" data-i18n-placeholder="booking.phone.placeholder" required>
+                </div>
+                <div class="form-group">
+                    <label for="type" data-i18n="booking.type">拍摄类型</label>
+                    <select id="type" name="type" required>
+                        <option value="" data-i18n="booking.type.placeholder">请选择拍摄类型</option>
+                        <option value="人像" data-i18n="booking.type.portrait">人像约拍</option>
+                        <option value="cosplay" data-i18n="booking.type.cosplay">Cosplay拍摄</option>
+                        <option value="ancient" data-i18n="booking.type.ancient">古风拍摄</option>
+                        <option value="activity" data-i18n="booking.type.activity">活动拍摄</option>
+                        <option value="comiccon" data-i18n="booking.type.comiccon">漫展跟拍/场照</option>
+                        <option value="commercial" data-i18n="booking.type.commercial">企业宣传片/餐饮拍摄</option>
+                        <option value="其他" data-i18n="booking.type.other">其他拍摄</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date" data-i18n="booking.date">期望拍摄日期/活动时间</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" data-i18n="booking.message">拍摄需求/活动信息</label>
+                    <textarea id="message" name="message" data-i18n-placeholder="booking.message.placeholder"></textarea>
+                </div>
+                <button type="submit" class="submit-btn" data-i18n="booking.submit">提交预约</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="contact.title">联系我</h2>
+                <div class="line"></div>
+            </div>
+            <div class="contact-content">
+                <p data-i18n="contact.desc">如果你喜欢我的作品，想要约拍、商业合作、活动跟拍，或是有任何摄影相关的问题，都可以通过以下方式联系我，我会尽快回复你。</p>
+                <div class="contact-list">
+                    <a href="tel:5168003413" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                    <a href="wechat:steven-photographer" class="contact-item">
+                        <i class="fab fa-weixin"></i>
+                    </a>
+                    <a href="mailto:wlyang119@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://instagram.com/steven_photo" target="_blank" class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://weibo.com/stevenphotographer" target="_blank" class="contact-item">
+                        <i class="fab fa-weibo"></i>
+                    </a>
+                </div>
+                <p style="font-size:16px; color:#333; font-weight:500;">
+                    <span data-i18n="contact.phone">电话：5168003413</span> &nbsp;&nbsp; 
+                    <span data-i18n="contact.email">邮箱：wlyang119@gmail.com</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p data-i18n="footer.copyright">© 2025 Steven摄影工作室 所有版权归Steven所有 | 电话：5168003413 | 邮箱：wlyang119@gmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // ==================== 1. 多语言配置 ====================
+        const translations = {
+            zh: {
+                "login.title": "管理员登录",
+                "login.username": "账号",
+                "login.username.placeholder": "请输入管理员账号",
+                "login.password": "密码",
+                "login.password.placeholder": "请输入管理员密码",
+                "login.submit": "登录",
+                "nav.home": "首页",
+                "nav.works": "作品",
+                "nav.about": "关于我",
+                "nav.booking": "约拍",
+                "nav.contact": "联系",
+                "banner.desc": "用镜头捕捉时光的温度",
+                "banner.btn": "查看作品",
+                "works.title": "我的作品",
+                "works.upload": "上传作品图片",
+                "works.upload.tip": "提示：先选择右侧分类，再上传图片会自动归类",
+                "works.filter.all": "全部",
+                "works.filter.portrait": "人像",
+                "works.filter.documentary": "纪实",
+                "works.filter.commercial": "商业",
+                "works.filter.cosplay": "Cosplay",
+                "works.filter.comiccon": "漫展场照",
+                "works.filter.cosplay.zhenpian": "正片",
+                "works.filter.cosplay.houqi": "后期合成",
+                "works.filter.commercial.hunli": "婚礼",
+                "works.filter.commercial.geren": "个人活动",
+                "works.filter.commercial.shangye": "商业活动",
+                "works.filter.comiccon.changzhao": "场照",
+                "works.filter.comiccon.houqi": "后期合成",
+                "works.portrait.title": "人像摄影作品",
+                "works.portrait.desc": "记录人物真实情绪与瞬间",
+                "works.documentary.title": "纪实摄影作品",
+                "works.documentary.desc": "记录生活真实故事与瞬间",
+                "works.cosplay.zhenpian.title": "Cosplay正片作品",
+                "works.cosplay.zhenpian.desc": "还原角色灵魂与精彩瞬间",
+                "works.cosplay.houqi.title": "Cosplay后期合成作品",
+                "works.cosplay.houqi.desc": "专业后期合成，打造梦幻效果",
+                "works.commercial.hunli.title": "婚礼摄影作品",
+                "works.commercial.hunli.desc": "记录浪漫婚礼瞬间，定格幸福时刻",
+                "works.commercial.geren.title": "个人活动摄影作品",
+                "works.commercial.geren.desc": "专业个人活动跟拍，记录精彩瞬间",
+                "works.commercial.shangye.title": "商业活动摄影作品",
+                "works.commercial.shangye.desc": "专业商业活动拍摄，展现品牌魅力",
+                "works.comiccon.changzhao.title": "漫展场照作品",
+                "works.comiccon.changzhao.desc": "捕捉漫展精彩瞬间，定格现场氛围",
+                "works.comiccon.houqi.title": "漫展场照后期合成作品",
+                "works.comiccon.houqi.desc": "专业后期处理，提升场照质感",
+                "modal.size.title": "设置作品尺寸",
+                "modal.size.width": "宽度 (px)",
+                "modal.size.width.placeholder": "请输入宽度",
+                "modal.size.height": "高度 (px)",
+                "modal.size.height.placeholder": "请输入高度",
+                "modal.delete.title": "确认删除",
+                "modal.delete.desc": "确定要删除该作品吗？此操作不可恢复！",
+                "modal.delete.confirm": "确认删除",
+                "modal.confirm": "确认",
+                "modal.cancel": "取消",
+                "modal.tip.success": "操作成功！",
+                "about.title": "关于我",
+                "about.greeting": "Hello, 我是Steven",
+                "about.bio.1": "执镜拍摄已有七年，深耕人像摄影领域，始终保持学习热忱，用心打磨每一项拍摄技艺。我擅长cosplay、古风以及各类活动拍摄，凭借丰富的实践经验，能够精准还原每一个角色的质感、细腻捕捉古风的雅致韵味，也能认真定格活动里每一个温暖又珍贵的高光瞬间，对待每一次拍摄，都始终保持严谨细致、高效专业的态度。",
+                "about.bio.2": "除此之外，我也涉足企业宣传片、餐馆环境和菜品拍摄，善于运用光影凸显作品质感；熟练使用PS、LR进行修图剪辑，精通各类摄影设备，能够灵活适配不同的拍摄场景和光线需求，用专业能力不负每一份信任。",
+                "about.bio.3": "拍摄时，我很愿意倾听大家的想法、耐心对接每一份需求，也会专业引导拍摄状态，让大家更放松、更出片。这些年我主导过多项拍摄项目，凭借扎实的专业能力获得了不少客户的认可与信赖。未来我也会继续秉持匠心、笃行致远，用专业和真诚，用心定格每一份美好与感动。",
+                "about.skills": "擅长：人像/Cosplay/古风/活动/企业宣传片/餐饮拍摄",
+                "about.experience": "7年摄影经验",
+                "about.phone": "电话：5168003413",
+                "about.email": "邮箱：wlyang119@gmail.com",
+                "booking.title": "预约拍摄",
+                "booking.name": "你的姓名",
+                "booking.name.placeholder": "请输入你的姓名",
+                "booking.phone": "联系电话",
+                "booking.phone.placeholder": "请输入你的联系电话",
+                "booking.type": "拍摄类型",
+                "booking.type.placeholder": "请选择拍摄类型",
+                "booking.type.portrait": "人像约拍",
+                "booking.type.cosplay": "Cosplay拍摄",
+                "booking.type.ancient": "古风拍摄",
+                "booking.type.activity": "活动拍摄",
+                "booking.type.comiccon": "漫展跟拍/场照",
+                "booking.type.commercial": "企业宣传片/餐饮拍摄",
+                "booking.type.other": "其他拍摄",
+                "booking.date": "期望拍摄日期/活动时间",
+                "booking.message": "拍摄需求/活动信息",
+                "booking.message.placeholder": "请详细描述拍摄需求/活动名称+地点等信息",
+                "booking.submit": "提交预约",
+                "contact.title": "联系我",
+                "contact.desc": "如果你喜欢我的作品，想要约拍、商业合作、活动跟拍，或是有任何摄影相关的问题，都可以通过以下方式联系我，我会尽快回复你。",
+                "contact.phone": "电话：5168003413",
+                "contact.email": "邮箱：wlyang119@gmail.com",
+                "footer.copyright": "© 2025 Steven摄影工作室 所有版权归Steven所有 | 电话：5168003413 | 邮箱：wlyang119@gmail.com"
+            },
+            en: {
+                "login.title": "Admin Login",
+                "login.username": "Username",
+                "login.username.placeholder": "Enter admin username",
+                "login.password": "Password",
+                "login.password.placeholder": "Enter admin password",
+                "login.submit": "Login",
+                "nav.home": "Home",
+                "nav.works": "Works",
+                "nav.about": "About",
+                "nav.booking": "Booking",
+                "nav.contact": "Contact",
+                "banner.desc": "Capture the warmth of time with a lens",
+                "banner.btn": "View Works",
+                "works.title": "My Works",
+                "works.upload": "Upload Works",
+                "works.upload.tip": "Tip: Select a category first, then upload images to auto-classify",
+                "works.filter.all": "All",
+                "works.filter.portrait": "Portrait",
+                "works.filter.documentary": "Documentary",
+                "works.filter.commercial": "Commercial",
+                "works.filter.cosplay": "Cosplay",
+                "works.filter.comiccon": "Comic Con",
+                "works.filter.cosplay.zhenpian": "Official",
+                "works.filter.cosplay.houqi": "Post Production",
+                "works.filter.commercial.hunli": "Wedding",
+                "works.filter.commercial.geren": "Personal Event",
+                "works.filter.commercial.shangye": "Commercial Event",
+                "works.filter.comiccon.changzhao": "On-Site",
+                "works.filter.comiccon.houqi": "Post Production",
+                "works.portrait.title": "Portrait Photography",
+                "works.portrait.desc": "Capture real emotions and moments",
+                "works.documentary.title": "Documentary Photography",
+                "works.documentary.desc": "Record real life stories and moments",
+                "works.cosplay.zhenpian.title": "Cosplay Official Works",
+                "works.cosplay.zhenpian.desc": "Restore character soul and wonderful moments",
+                "works.cosplay.houqi.title": "Cosplay Post Production",
+                "works.cosplay.houqi.desc": "Professional post-production for dreamy effects",
+                "works.commercial.hunli.title": "Wedding Photography",
+                "works.commercial.hunli.desc": "Record romantic wedding moments, freeze happiness",
+                "works.commercial.geren.title": "Personal Event Photography",
+                "works.commercial.geren.desc": "Professional personal event coverage, record wonderful moments",
+                "works.commercial.shangye.title": "Commercial Event Photography",
+                "works.commercial.shangye.desc": "Professional commercial event shooting, show brand charm",
+                "works.comiccon.changzhao.title": "Comic Con On-Site Photos",
+                "works.comiccon.changzhao.desc": "Capture wonderful moments at comic con, freeze the atmosphere",
+                "works.comiccon.houqi.title": "Comic Con Post Production",
+                "works.comiccon.houqi.desc": "Professional post-processing to enhance photo quality",
+                "modal.size.title": "Set Work Size",
+                "modal.size.width": "Width (px)",
+                "modal.size.width.placeholder": "Enter width",
+                "modal.size.height": "Height (px)",
+                "modal.size.height.placeholder": "Enter height",
+                "modal.delete.title": "Confirm Delete",
+                "modal.delete.desc": "Are you sure you want to delete this work? This action cannot be undone!",
+                "modal.delete.confirm": "Confirm Delete",
+                "modal.confirm": "Confirm",
+                "modal.cancel": "Cancel",
+                "modal.tip.success": "Operation Success!",
+                "about.title": "About Me",
+                "about.greeting": "Hello, I'm Steven",
+                "about.bio.1": "With seven years of photography experience, I specialize in portrait photography and maintain a passion for learning, honing my skills with every shot. I excel at cosplay, ancient style, and various event photography. With rich practical experience, I can accurately restore the texture of each character, delicately capture the elegance of ancient style, and earnestly freeze every warm and precious highlight moment in events. I always maintain a rigorous, meticulous, efficient, and professional attitude towards every shoot.",
+                "about.bio.2": "In addition, I also work on corporate promotional videos, restaurant environments, and food photography, adept at using light and shadow to highlight the texture of works. I am proficient in PS and LR for retouching and editing, and master various photography equipment, able to flexibly adapt to different shooting scenes and light requirements, living up to every trust with professional capabilities.",
+                "about.bio.3": "During shoots, I am willing to listen to everyone's ideas, patiently connect with every need, and professionally guide the shooting state to make everyone more relaxed and produce better photos. Over the years, I have led many shooting projects and gained recognition and trust from many clients with my solid professional abilities. In the future, I will continue to uphold ingenuity and keep moving forward, capturing every beauty and touch with professionalism and sincerity.",
+                "about.skills": "Skills: Portrait/Cosplay/Ancient Style/Events/Corporate Videos/Food Photography",
+                "about.experience": "7 Years Experience",
+                "about.phone": "Phone: 5168003413",
+                "about.email": "Email: wlyang119@gmail.com",
+                "booking.title": "Book a Shoot",
+                "booking.name": "Your Name",
+                "booking.name.placeholder": "Enter your name",
+                "booking.phone": "Phone",
+                "booking.phone.placeholder": "Enter your phone number",
+                "booking.type": "Shoot Type",
+                "booking.type.placeholder": "Select shoot type",
+                "booking.type.portrait": "Portrait Shoot",
+                "booking.type.cosplay": "Cosplay Shoot",
+                "booking.type.ancient": "Ancient Style Shoot",
+                "booking.type.activity": "Event Shoot",
+                "booking.type.comiccon": "Comic Con Coverage",
+                "booking.type.commercial": "Corporate/Food Shoot",
+                "booking.type.other": "Other Shoots",
+                "booking.date": "Preferred Date/Event Time",
+                "booking.message": "Shoot Requirements/Event Info",
+                "booking.message.placeholder": "Describe your needs/event name + location in detail",
+                "booking.submit": "Submit Booking",
+                "contact.title": "Contact Me",
+                "contact.desc": "If you like my works, want to book a shoot, commercial cooperation, event coverage, or have any photography-related questions, you can contact me through the following ways, and I will reply to you as soon as possible.",
+                "contact.phone": "Phone: 5168003413",
+                "contact.email": "Email: wlyang119@gmail.com",
+                "footer.copyright": "© 2025 Steven Photography Studio. All rights reserved. | Phone: 5168003413 | Email: wlyang119@gmail.com"
+            }
+        };
+
+        // 子分类配置
+        const subCategories = {
+            cosplay: [
+                { key: 'zhenpian', text: 'works.filter.cosplay.zhenpian' },
+                { key: 'houqi', text: 'works.filter.cosplay.houqi' }
+            ],
+            commercial: [
+                { key: 'hunli', text: 'works.filter.commercial.hunli' },
+                { key: 'geren', text: 'works.filter.commercial.geren' },
+                { key: 'shangye', text: 'works.filter.commercial.shangye' }
+            ],
+            comiccon: [
+                { key: 'changzhao', text: 'works.filter.comiccon.changzhao' },
+                { key: 'houqi', text: 'works.filter.comiccon.houqi' }
+            ]
+        };
+
+        // 语言切换函数
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+            // 更新子分类按钮文本
+            updateSubFilterText(lang);
+        }
+
+        // 语言切换按钮事件
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                changeLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+
+        // ==================== 2. 子分类筛选功能 ====================
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const subFilter = document.getElementById('subFilter');
+        const worksItems = document.querySelectorAll('.works-item');
+        let currentCategory = 'all';
+        let currentSubCategory = 'all';
+
+        // 更新子分类按钮文本
+        function updateSubFilterText(lang) {
+            document.querySelectorAll('.sub-filter-btn').forEach(btn => {
+                const key = btn.getAttribute('data-subfilter');
+                const textKey = btn.getAttribute('data-i18n');
+                if (textKey && translations[lang][textKey]) {
+                    btn.textContent = translations[lang][textKey];
+                }
+            });
+        }
+
+        // 生成子分类按钮
+        function renderSubFilter(category) {
+            subFilter.innerHTML = '';
+            if (category === 'all' || !subCategories[category]) {
+                return;
+            }
+            // 添加“全部”子分类按钮
+            const allBtn = document.createElement('button');
+            allBtn.className = 'sub-filter-btn active';
+            allBtn.setAttribute('data-subfilter', 'all');
+            allBtn.setAttribute('data-i18n', 'works.filter.all');
+            allBtn.textContent = translations[document.documentElement.lang]['works.filter.all'];
+            subFilter.appendChild(allBtn);
+
+            // 生成对应主分类的子分类按钮
+            subCategories[category].forEach(sub => {
+                const btn = document.createElement('button');
+                btn.className = 'sub-filter-btn';
+                btn.setAttribute('data-subfilter', sub.key);
+                btn.setAttribute('data-i18n', sub.text);
+                btn.textContent = translations[document.documentElement.lang][sub.text];
+                subFilter.appendChild(btn);
+            });
+
+            // 子分类按钮点击事件
+            document.querySelectorAll('.sub-filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.sub-filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentSubCategory = btn.getAttribute('data-subfilter');
+                    filterWorks();
+                });
+            });
+        }
+
+        // 筛选作品
+        function filterWorks() {
+            worksItems.forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+                const itemSubCategory = item.getAttribute('data-subcategory');
+                
+                let show = true;
+                if (currentCategory !== 'all' && itemCategory !== currentCategory) {
+                    show = false;
+                }
+                if (currentSubCategory !== 'all' && itemSubCategory !== currentSubCategory) {
+                    show = false;
+                }
+                item.style.display = show ? 'block' : 'none';
+            });
+        }
+
+        // 主分类按钮点击事件
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.getAttribute('data-filter');
+                currentSubCategory = 'all';
+                renderSubFilter(currentCategory);
+                filterWorks();
+            });
+        });
+
+        // ==================== 3. 管理员登录功能 ====================
+        const ADMIN_USER = 'steven';
+        const ADMIN_PWD = '12345678';
+        const loginPage = document.getElementById('loginPage');
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+        const body = document.body;
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = document.getElementById('adminUser').value.trim();
+            const pwd = document.getElementById('adminPwd').value.trim();
+            
+            if (user === ADMIN_USER && pwd === ADMIN_PWD) {
+                // 登录成功：隐藏登录页，添加管理员标识，显示所有管理功能
+                loginPage.style.display = 'none';
+                body.classList.add('admin-logged');
+                showTip(translations[document.documentElement.lang]['modal.tip.success']);
+            } else {
+                // 登录失败：显示错误提示
+                loginError.innerText = '账号或密码错误，请重新输入！';
+                setTimeout(() => { loginError.innerText = ''; }, 3000);
+            }
+        });
+
+        // ==================== 4. 头像更换功能 ====================
+        const avatarReplaceBtn = document.querySelector('.about-img .replace-btn');
+        const avatarReplace = document.getElementById('avatarReplace');
+        const avatarImg = document.querySelector('.about-img img');
+
+        avatarReplaceBtn.addEventListener('click', () => {
+            avatarReplace.click();
+        });
+
+        avatarReplace.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    avatarImg.src = event.target.result;
+                    showTip(translations[document.documentElement.lang]['modal.tip.success']);
+                    avatarReplace.value = ''; // 清空文件选择
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // ==================== 5. 【已整合】封面图更换功能 ====================
+        const bannerReplaceBtn = document.getElementById('bannerReplaceBtn');
+        const bannerReplace = document.getElementById('bannerReplace');
+        const banner = document.querySelector('.banner');
+
+        // 点击按钮触发文件选择
+        bannerReplaceBtn.addEventListener('click', () => {
+            bannerReplace.click();
+        });
+
+        // 选择图片后更换封面
+        bannerReplace.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    // 更换封面背景
+                    banner.style.backgroundImage = `url(${event.target.result})`;
+                    // 提示更换成功
+                    showTip(translations[document.documentElement.lang]['modal.tip.success']);
+                    // 清空文件选择框，方便再次选择
+                    bannerReplace.value = '';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // ==================== 6. 其他原有功能（导航、弹窗、上传、删除等） ====================
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('nav');
+            nav.style.padding = window.scrollY > 100 ? '10px 0' : '20px 0';
+            nav.style.boxShadow = window.scrollY > 100 ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
+        });
+
+        // 移动端菜单
+        const menuBtn = document.querySelector('.menu-btn');
+        const navList = document.querySelector('.nav-list');
+        menuBtn.addEventListener('click', function() {
+            navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
+            navList.style.flexDirection = 'column';
+            navList.style.position = 'absolute';
+            navList.style.top = '70px';
+            navList.style.right = '20px';
+            navList.style.background = '#fff';
+            navList.style.padding = '20px';
+            navList.style.borderRadius = '2px';
+            navList.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
+            navList.style.gap = '20px';
+        });
+
+        // 作品大图预览
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeModal = document.querySelector('.close-modal');
+
+        worksItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (!e.target.closest('.item-actions')) {
+                    modal.style.display = 'flex';
+                    modalImg.src = item.querySelector('img').src;
+                }
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // 提示弹窗
+        const tipModal = document.getElementById('tipModal');
+        function showTip(message) {
+            tipModal.textContent = message;
+            tipModal.style.display = 'block';
+            setTimeout(() => { tipModal.style.display = 'none'; }, 2000);
+        }
+
+        // 初始化
+        changeLanguage('zh');
+        renderSubFilter('all');
+    </script>
+</body>
+</html>
