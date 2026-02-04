@@ -1229,7 +1229,7 @@
                     <a href="tel:5168003413" class="contact-item">
                         <i class="fas fa-phone"></i>
                     </a>
-                    <a href="wechat:steven-photographer" class="contact-item">
+                    <a href="wechat:SteveN_YanG_NYC" class="contact-item">
                         <i class="fab fa-weixin"></i>
                     </a>
                     <a href="mailto:wlyang119@gmail.com" class="contact-item">
@@ -1244,6 +1244,7 @@
                 </div>
                 <p style="font-size:16px; color:#333; font-weight:500;">
                     <span data-i18n="contact.phone">电话：5168003413</span> &nbsp;&nbsp; 
+                    <span data-i18n="contact.wechat">微信：SteveN_YanG_NYC</span> &nbsp;&nbsp; 
                     <span data-i18n="contact.email">邮箱：wlyang119@gmail.com</span>
                 </p>
             </div>
@@ -1253,7 +1254,7 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
-            <p data-i18n="footer.copyright">© 2025 Steven摄影工作室 所有版权归Steven所有 | 电话：5168003413 | 邮箱：wlyang119@gmail.com</p>
+            <p data-i18n="footer.copyright">© 2025 Steven摄影工作室 所有版权归Steven所有 | 电话：5168003413 | 微信：SteveN_YanG_NYC | 邮箱：wlyang119@gmail.com</p>
         </div>
     </footer>
 
@@ -1349,8 +1350,9 @@
                 "contact.title": "联系我",
                 "contact.desc": "如果你喜欢我的作品，想要约拍、商业合作、活动跟拍，或是有任何摄影相关的问题，都可以通过以下方式联系我，我会尽快回复你。",
                 "contact.phone": "电话：5168003413",
+                "contact.wechat": "微信：SteveN_YanG_NYC",
                 "contact.email": "邮箱：wlyang119@gmail.com",
-                "footer.copyright": "© 2025 Steven摄影工作室 所有版权归Steven所有 | 电话：5168003413 | 邮箱：wlyang119@gmail.com"
+                "footer.copyright": "© 2025 Steven摄影工作室 所有版权归Steven所有 | 电话：5168003413 | 微信：SteveN_YanG_NYC | 邮箱：wlyang119@gmail.com"
             },
             en: {
                 "login.title": "Admin Login",
@@ -1441,8 +1443,9 @@
                 "contact.title": "Contact Me",
                 "contact.desc": "If you like my works, want to book a shoot, commercial cooperation, event coverage, or have any photography-related questions, you can contact me through the following ways, and I will reply to you as soon as possible.",
                 "contact.phone": "Phone: 5168003413",
+                "contact.wechat": "WeChat: SteveN_YanG_NYC",
                 "contact.email": "Email: wlyang119@gmail.com",
-                "footer.copyright": "© 2025 Steven Photography Studio. All rights reserved. | Phone: 5168003413 | Email: wlyang119@gmail.com"
+                "footer.copyright": "© 2025 Steven Photography Studio. All rights reserved. | Phone: 5168003413 | WeChat: SteveN_YanG_NYC | Email: wlyang119@gmail.com"
             }
         };
 
@@ -1609,8 +1612,9 @@
                 loginPage.style.display = 'none';
                 body.classList.add('admin-logged');
                 // 保存登录状态7天
+                const expireTime = new Date().getTime() + 7*24*60*60*1000;
                 localStorage.setItem('adminLogged', 'true');
-                localStorage.setItem('adminExpire', now + 7*24*60*60*1000);
+                localStorage.setItem('adminExpire', expireTime);
                 showTip(translations[document.documentElement.lang]['modal.tip.success']);
             } else {
                 // 登录失败
@@ -1668,7 +1672,64 @@
             }
         });
 
-        // ==================== 6. 其他原有功能 ====================
+        // ==================== 6. 作品上传功能修复 ====================
+        const uploadBtn = document.getElementById('uploadBtn');
+        const uploadInput = document.getElementById('uploadInput');
+        const worksList = document.getElementById('worksList');
+
+        // 点击上传按钮，触发文件选择
+        uploadBtn.addEventListener('click', () => {
+            uploadInput.click();
+        });
+
+        // 选择文件后，自动添加到作品列表
+        uploadInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (!files.length) return;
+
+            // 获取当前选中的分类（用于自动归类）
+            const currentCategory = document.querySelector('.filter-btn.active').getAttribute('data-filter') || 'all';
+            const currentSubCategory = document.querySelector('.sub-filter-btn.active')?.getAttribute('data-subfilter') || '';
+
+            Array.from(files).forEach(file => {
+                // 只处理图片
+                if (!file.type.startsWith('image/')) return;
+
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    // 创建新作品项
+                    const newWork = document.createElement('div');
+                    newWork.className = 'works-item';
+                    newWork.setAttribute('data-category', currentCategory === 'all' ? 'portrait' : currentCategory);
+                    if (currentSubCategory) {
+                        newWork.setAttribute('data-subcategory', currentSubCategory);
+                    }
+
+                    newWork.innerHTML = `
+                        <img src="${event.target.result}" alt="新上传作品">
+                        <div class="item-actions">
+                            <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                            <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                            <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <div class="work-info">
+                            <div class="work-title" contenteditable="true">新作品</div>
+                            <div class="work-desc" contenteditable="true">点击编辑描述</div>
+                        </div>
+                    `;
+
+                    worksList.prepend(newWork); // 加到最前面
+                };
+                reader.readAsDataURL(file);
+            });
+
+            // 提示上传成功
+            showTip(translations[document.documentElement.lang]['modal.tip.success']);
+            // 清空文件选择，方便再次上传
+            uploadInput.value = '';
+        });
+
+        // ==================== 7. 其他原有功能 ====================
         // 导航栏滚动效果
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('nav');
