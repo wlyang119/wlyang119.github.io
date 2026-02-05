@@ -6,7 +6,6 @@
     <title>Steven | 摄影师个人网站</title>
     <meta name="description" content="Steven摄影师个人作品展示，专注人像/Cosplay/古风/活动拍摄/企业宣传片/餐饮拍摄，承接商业拍摄、人像约拍、活动跟拍等业务">
     <meta name="keywords" content="Steven,摄影师,人像摄影,Cosplay摄影,古风摄影,活动拍摄,企业宣传片,餐饮拍摄,PS修图,LR修图">
-    <!-- 引入图标库 -->
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -32,7 +31,6 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-        /* 语言切换按钮 */
         .lang-switch {
             position: fixed;
             top: 25px;
@@ -56,7 +54,6 @@
             background-color: #333;
             color: #fff;
         }
-        /* 管理员登录界面 - 【修复】默认隐藏 */
         .login-page {
             position: fixed;
             top: 0;
@@ -65,7 +62,7 @@
             height: 100vh;
             background-color: #fff;
             z-index: 99999;
-            display: none; /* 核心修复：默认隐藏登录页 */
+            display: none;
             align-items: center;
             justify-content: center;
             flex-direction: column;
@@ -138,7 +135,6 @@
         .login-btn:hover {
             background-color: #333;
         }
-        /* 导航栏 */
         .nav {
             position: fixed;
             top: 0;
@@ -180,7 +176,6 @@
             font-size: 24px;
             cursor: pointer;
         }
-        /* 首页Banner */
         .banner {
             height: 100vh;
             background: url('https://picsum.photos/1920/1080?random=1') no-repeat center center;
@@ -229,7 +224,6 @@
             background-color: #fff;
             color: #000;
         }
-        /* 作品展示-管理功能仅登录后显示 */
         .works {
             padding: 120px 0;
         }
@@ -249,7 +243,6 @@
             background-color: #333;
             margin: 0 auto;
         }
-        /* 上传按钮样式 - 管理员专属 */
         .upload-box {
             text-align: center;
             margin-bottom: 40px;
@@ -280,7 +273,6 @@
             color: #666;
             margin-top: 10px;
         }
-        /* 作品分类筛选 */
         .works-filter {
             display: flex;
             justify-content: center;
@@ -303,7 +295,6 @@
             background-color: #333;
             color: #fff;
         }
-        /* 子分类筛选 */
         .sub-filter {
             display: flex;
             justify-content: center;
@@ -328,7 +319,6 @@
             color: #fff;
             border-color: #666;
         }
-        /* 作品列表 */
         .works-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -351,7 +341,6 @@
         .works-item:hover img {
             transform: scale(1.1);
         }
-        /* 操作按钮-管理员专属 */
         .item-actions {
             position: absolute;
             top: 10px;
@@ -402,7 +391,6 @@
         .text-btn:hover {
             background-color: #ffc107;
         }
-        /* 尺寸设置弹窗 */
         .size-modal {
             position: fixed;
             top: 0;
@@ -476,7 +464,6 @@
         .cancel-btn:hover {
             background-color: #5c636a;
         }
-        /* 作品文字信息 */
         .work-info {
             padding: 15px;
             background-color: #fff;
@@ -494,7 +481,6 @@
             cursor: pointer;
             outline: none;
         }
-        /* 作品大图预览弹窗 */
         .modal {
             display: none;
             position: fixed;
@@ -526,7 +512,6 @@
         .close-modal:hover {
             color: #ccc;
         }
-        /* 删除确认弹窗 */
         .delete-modal {
             position: fixed;
             top: 0;
@@ -577,7 +562,6 @@
         .confirm-delete:hover {
             background-color: #bb2d3b;
         }
-        /* 提示弹窗样式 */
         .tip-modal {
             position: fixed;
             top: 20px;
@@ -590,7 +574,6 @@
             display: none;
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
-        /* 关于我 */
         .about {
             padding: 120px 0;
             background-color: #fff;
@@ -612,7 +595,6 @@
             border-radius: 2px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
-        /* 头像替换按钮 - 管理员专属 */
         .about-img .replace-btn {
             display: none;
             width: 40px;
@@ -653,7 +635,6 @@
             font-size: 20px;
             color: #000;
         }
-        /* 约拍表单 */
         .booking {
             padding: 120px 0;
             background-color: #f5f5f5;
@@ -710,7 +691,6 @@
         .submit-btn:hover {
             background-color: #333;
         }
-        /* 联系方式 */
         .contact {
             padding: 120px 0;
             text-align: center;
@@ -750,7 +730,6 @@
         .contact-item i {
             font-size: 30px;
         }
-        /* 页脚 */
         .footer {
             padding: 40px 0;
             background-color: #000;
@@ -765,7 +744,6 @@
             color: #fff;
             text-decoration: underline;
         }
-        /* 响应式 */
         @media (max-width: 768px) {
             .lang-switch {
                 top: 15px;
@@ -833,7 +811,6 @@
                 font-size: 28px;
             }
         }
-        /* 管理员登录后显示所有操作功能 */
         .admin-logged .upload-box,
         .admin-logged .item-actions,
         .admin-logged .about-img .replace-btn {
@@ -843,19 +820,16 @@
             display: flex;
         }
     </style>
-    <!-- 引入字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- 语言切换按钮 -->
     <div class="lang-switch">
         <button class="lang-btn active" data-lang="zh">中文</button>
         <button class="lang-btn" data-lang="en">English</button>
     </div>
 
-    <!-- 管理员登录界面 -->
     <div class="login-page" id="loginPage">
         <div class="login-logo">STEVEN</div>
         <div class="login-box">
@@ -875,7 +849,6 @@
         </div>
     </div>
 
-    <!-- 导航栏 -->
     <nav class="nav" id="nav">
         <div class="container">
             <div class="logo">
@@ -894,7 +867,6 @@
         </div>
     </nav>
 
-    <!-- 首页Banner -->
     <section class="banner" id="home">
         <div class="banner-mask"></div>
         <div class="banner-content">
@@ -904,7 +876,6 @@
         </div>
     </section>
 
-    <!-- 作品展示 -->
     <section class="works" id="works">
         <div class="container">
             <div class="section-title">
@@ -912,7 +883,6 @@
                 <div class="line"></div>
             </div>
 
-            <!-- 作品上传按钮 - 管理员专属 -->
             <div class="upload-box">
                 <button class="upload-btn" id="uploadBtn">
                     <i class="fas fa-upload"></i> <span data-i18n="works.upload">上传作品图片</span>
@@ -921,175 +891,26 @@
                 <div class="category-tip" data-i18n="works.upload.tip">提示：先选择右侧分类，再上传图片会自动归类</div>
             </div>
 
-            <!-- 主分类筛选 -->
             <div class="works-filter">
                 <button class="filter-btn active" data-filter="all" data-i18n="works.filter.all">全部</button>
                 <button class="filter-btn" data-filter="portrait" data-i18n="works.filter.portrait">人像</button>
-                <button class="filter-btn" data-filter="documentary" data-i18n="works.filter.documentary">纪实</button>
+                <button class="filter-btn" data-filter="documentary" data-i18n="works.filter.documentary">古风</button>
                 <button class="filter-btn" data-filter="commercial" data-i18n="works.filter.commercial">商业</button>
                 <button class="filter-btn" data-filter="cosplay" data-i18n="works.filter.cosplay">Cosplay</button>
                 <button class="filter-btn" data-filter="comiccon" data-i18n="works.filter.comiccon">漫展场照</button>
             </div>
 
-            <!-- 子分类筛选 -->
-            <div class="sub-filter" id="subFilter">
-                <!-- 子分类按钮将由JS动态生成 -->
-            </div>
+            <div class="sub-filter" id="subFilter"></div>
 
-            <!-- 作品列表 -->
-            <div class="works-list" id="worksList">
-                <!-- Cosplay - 正片 -->
-                <div class="works-item" data-category="cosplay" data-subcategory="zhenpian">
-                    <img src="https://picsum.photos/800/1000?random=9" alt="Cosplay正片作品">
-                    <div class="item-actions">
-                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title" contenteditable="true" data-i18n="works.cosplay.zhenpian.title">Cosplay正片作品</div>
-                        <div class="work-desc" contenteditable="true" data-i18n="works.cosplay.zhenpian.desc">还原角色灵魂与精彩瞬间</div>
-                    </div>
-                </div>
-                <div class="works-item" data-category="cosplay" data-subcategory="zhenpian">
-                    <img src="https://picsum.photos/800/1000?random=10" alt="Cosplay正片作品">
-                    <div class="item-actions">
-                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title" contenteditable="true" data-i18n="works.cosplay.zhenpian.title">Cosplay正片作品</div>
-                        <div class="work-desc" contenteditable="true" data-i18n="works.cosplay.zhenpian.desc">还原角色灵魂与精彩瞬间</div>
-                    </div>
-                </div>
-                <!-- Cosplay - 后期合成 -->
-                <div class="works-item" data-category="cosplay" data-subcategory="houqi">
-                    <img src="https://picsum.photos/800/1000?random=11" alt="Cosplay后期合成作品">
-                    <div class="item-actions">
-                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title" contenteditable="true" data-i18n="works.cosplay.houqi.title">Cosplay后期合成作品</div>
-                        <div class="work-desc" contenteditable="true" data-i18n="works.cosplay.houqi.desc">专业后期合成，打造梦幻效果</div>
-                    </div>
-                </div>
-                <!-- 商业 - 婚礼 -->
-                <div class="works-item" data-category="commercial" data-subcategory="hunli">
-                    <img src="https://picsum.photos/800/1000?random=30" alt="婚礼摄影作品">
-                    <div class="item-actions">
-                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title" contenteditable="true" data-i18n="works.commercial.hunli.title">婚礼摄影作品</div>
-                        <div class="work-desc" contenteditable="true" data-i18n="works.commercial.hunli.desc">记录浪漫婚礼瞬间，定格幸福时刻</div>
-                    </div>
-                </div>
-                <!-- 商业 - 个人活动 -->
-                <div class="works-item" data-category="commercial" data-subcategory="geren">
-                    <img src="https://picsum.photos/800/1000?random=31" alt="个人活动摄影作品">
-                    <div class="item-actions">
-                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title" contenteditable="true" data-i18n="works.commercial.geren.title">个人活动摄影作品</div>
-                        <div class="work-desc" contenteditable="true" data-i18n="works.commercial.geren.desc">专业个人活动跟拍，记录精彩瞬间</div>
-                    </div>
-                </div>
-                <!-- 商业 - 商业活动 -->
-                <div class="works-item" data-category="commercial" data-subcategory="shangye">
-                    <img src="https://picsum.photos/800/1000?random=32" alt="商业活动摄影作品">
-                    <div class="item-actions">
-                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title" contenteditable="true" data-i18n="works.commercial.shangye.title">商业活动摄影作品</div>
-                        <div class="work-desc" contenteditable="true" data-i18n="works.commercial.shangye.desc">专业商业活动拍摄，展现品牌魅力</div>
-                    </div>
-                </div>
-                <!-- 漫展场照 - 场照 -->
-                <div class="works-item" data-category="comiccon" data-subcategory="changzhao">
-                    <img src="https://picsum.photos/800/1000?random=20" alt="漫展场照作品">
-                    <div class="item-actions">
-                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title" contenteditable="true" data-i18n="works.comiccon.changzhao.title">漫展场照作品</div>
-                        <div class="work-desc" contenteditable="true" data-i18n="works.comiccon.changzhao.desc">捕捉漫展精彩瞬间，定格现场氛围</div>
-                    </div>
-                </div>
-                <div class="works-item" data-category="comiccon" data-subcategory="changzhao">
-                    <img src="https://picsum.photos/800/1000?random=21" alt="漫展场照作品">
-                    <div class="item-actions">
-                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title" contenteditable="true" data-i18n="works.comiccon.changzhao.title">漫展场照作品</div>
-                        <div class="work-desc" contenteditable="true" data-i18n="works.comiccon.changzhao.desc">捕捉漫展精彩瞬间，定格现场氛围</div>
-                    </div>
-                </div>
-                <!-- 漫展场照 - 后期合成 -->
-                <div class="works-item" data-category="comiccon" data-subcategory="houqi">
-                    <img src="https://picsum.photos/800/1000?random=22" alt="漫展场照后期合成作品">
-                    <div class="item-actions">
-                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title" contenteditable="true" data-i18n="works.comiccon.houqi.title">漫展场照后期合成作品</div>
-                        <div class="work-desc" contenteditable="true" data-i18n="works.comiccon.houqi.desc">专业后期处理，提升场照质感</div>
-                    </div>
-                </div>
-                <!-- 人像作品 -->
-                <div class="works-item" data-category="portrait">
-                    <img src="https://picsum.photos/800/1000?random=2" alt="人像摄影作品">
-                    <div class="item-actions">
-                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title" contenteditable="true" data-i18n="works.portrait.title">人像摄影作品</div>
-                        <div class="work-desc" contenteditable="true" data-i18n="works.portrait.desc">记录人物真实情绪与瞬间</div>
-                    </div>
-                </div>
-                <!-- 纪实作品 -->
-                <div class="works-item" data-category="documentary">
-                    <img src="https://picsum.photos/800/1000?random=4" alt="纪实摄影作品">
-                    <div class="item-actions">
-                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                    </div>
-                    <div class="work-info">
-                        <div class="work-title" contenteditable="true" data-i18n="works.documentary.title">纪实摄影作品</div>
-                        <div class="work-desc" contenteditable="true" data-i18n="works.documentary.desc">记录生活真实故事与瞬间</div>
-                    </div>
-                </div>
-            </div>
+            <div class="works-list" id="worksList"></div>
         </div>
     </section>
 
-    <!-- 作品大图预览弹窗 -->
     <div class="modal" id="modal">
         <span class="close-modal">&times;</span>
         <img class="modal-content" id="modal-img">
     </div>
 
-    <!-- 尺寸设置弹窗 -->
     <div class="size-modal" id="sizeModal">
         <div class="size-content">
             <h3 data-i18n="modal.size.title">设置作品尺寸</h3>
@@ -1110,7 +931,6 @@
         </div>
     </div>
 
-    <!-- 删除确认弹窗 -->
     <div class="delete-modal" id="deleteModal">
         <div class="delete-content">
             <h3 data-i18n="modal.delete.title">确认删除</h3>
@@ -1122,10 +942,8 @@
         </div>
     </div>
 
-    <!-- 操作提示弹窗 -->
     <div class="tip-modal" id="tipModal" data-i18n="modal.tip.success">操作成功！</div>
 
-    <!-- 关于我 -->
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
@@ -1139,8 +957,6 @@
                         <i class="fas fa-edit"></i>
                     </button>
                     <input type="file" class="replace-input" id="avatarReplace" accept="image/jpg,image/png,image/webp">
-                    
-                    <!-- 封面图更换按钮 - 管理员专属 -->
                     <button class="action-btn replace-btn" style="top: 60px; left: 10px;" id="bannerReplaceBtn">
                         <i class="fas fa-image"></i>
                     </button>
@@ -1174,7 +990,6 @@
         </div>
     </section>
 
-    <!-- 约拍表单 -->
     <section class="booking" id="booking">
         <div class="container">
             <div class="section-title">
@@ -1196,10 +1011,10 @@
                         <option value="" data-i18n="booking.type.placeholder">请选择拍摄类型</option>
                         <option value="人像" data-i18n="booking.type.portrait">人像约拍</option>
                         <option value="cosplay" data-i18n="booking.type.cosplay">Cosplay拍摄</option>
-                        <option value="ancient" data-i18n="booking.type.ancient">古风拍摄</option>
-                        <option value="activity" data-i18n="booking.type.activity">活动拍摄</option>
-                        <option value="comiccon" data-i18n="booking.type.comiccon">漫展跟拍/场照</option>
-                        <option value="commercial" data-i18n="booking.type.commercial">企业宣传片/餐饮拍摄</option>
+                        <option value="古风" data-i18n="booking.type.ancient">古风拍摄</option>
+                        <option value="活动" data-i18n="booking.type.activity">活动拍摄</option>
+                        <option value="漫展" data-i18n="booking.type.comiccon">漫展跟拍/场照</option>
+                        <option value="商业" data-i18n="booking.type.commercial">企业宣传片/餐饮拍摄</option>
                         <option value="其他" data-i18n="booking.type.other">其他拍摄</option>
                     </select>
                 </div>
@@ -1216,7 +1031,6 @@
         </div>
     </section>
 
-    <!-- 联系方式 -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
@@ -1251,7 +1065,6 @@
         </div>
     </section>
 
-    <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
             <p data-i18n="footer.copyright">© 2025 Steven摄影工作室 所有版权归Steven所有 | 电话：5168003413 | 微信：SteveN_YanG_NYC | 邮箱：wlyang119@gmail.com</p>
@@ -1259,7 +1072,7 @@
     </footer>
 
     <script>
-        // ==================== 1. 多语言配置 ====================
+        // ==================== 多语言配置 ====================
         const translations = {
             zh: {
                 "login.title": "管理员登录",
@@ -1277,10 +1090,10 @@
                 "banner.btn": "查看作品",
                 "works.title": "我的作品",
                 "works.upload": "上传作品图片",
-                "works.upload.tip": "提示：先选择右侧分类，再上传图片会自动归类",
+                "works.upload.tip": "提示：先选择分类，再上传图片会自动归类",
                 "works.filter.all": "全部",
                 "works.filter.portrait": "人像",
-                "works.filter.documentary": "纪实",
+                "works.filter.documentary": "古风",
                 "works.filter.commercial": "商业",
                 "works.filter.cosplay": "Cosplay",
                 "works.filter.comiccon": "漫展场照",
@@ -1293,8 +1106,8 @@
                 "works.filter.comiccon.houqi": "后期合成",
                 "works.portrait.title": "人像摄影作品",
                 "works.portrait.desc": "记录人物真实情绪与瞬间",
-                "works.documentary.title": "纪实摄影作品",
-                "works.documentary.desc": "记录生活真实故事与瞬间",
+                "works.documentary.title": "古风摄影作品",
+                "works.documentary.desc": "记录古风雅致韵味与东方之美",
                 "works.cosplay.zhenpian.title": "Cosplay正片作品",
                 "works.cosplay.zhenpian.desc": "还原角色灵魂与精彩瞬间",
                 "works.cosplay.houqi.title": "Cosplay后期合成作品",
@@ -1370,10 +1183,10 @@
                 "banner.btn": "View Works",
                 "works.title": "My Works",
                 "works.upload": "Upload Works",
-                "works.upload.tip": "Tip: Select a category first, then upload images to auto-classify",
+                "works.upload.tip": "Tip: Select category first, then upload to auto-classify",
                 "works.filter.all": "All",
                 "works.filter.portrait": "Portrait",
-                "works.filter.documentary": "Documentary",
+                "works.filter.documentary": "Ancient Style",
                 "works.filter.commercial": "Commercial",
                 "works.filter.cosplay": "Cosplay",
                 "works.filter.comiccon": "Comic Con",
@@ -1384,41 +1197,41 @@
                 "works.filter.commercial.shangye": "Commercial Event",
                 "works.filter.comiccon.changzhao": "On-Site",
                 "works.filter.comiccon.houqi": "Post Production",
-                "works.portrait.title": "Portrait Photography",
+                "works.portrait.title": "Portrait Work",
                 "works.portrait.desc": "Capture real emotions and moments",
-                "works.documentary.title": "Documentary Photography",
-                "works.documentary.desc": "Record real life stories and moments",
-                "works.cosplay.zhenpian.title": "Cosplay Official Works",
-                "works.cosplay.zhenpian.desc": "Restore character soul and wonderful moments",
+                "works.documentary.title": "Ancient Style Work",
+                "works.documentary.desc": "Capture the elegance and beauty of ancient style",
+                "works.cosplay.zhenpian.title": "Cosplay Official Work",
+                "works.cosplay.zhenpian.desc": "Restore character soul and moments",
                 "works.cosplay.houqi.title": "Cosplay Post Production",
-                "works.cosplay.houqi.desc": "Professional post-production for dreamy effects",
+                "works.cosplay.houqi.desc": "Professional post-production for dream effects",
                 "works.commercial.hunli.title": "Wedding Photography",
-                "works.commercial.hunli.desc": "Record romantic wedding moments, freeze happiness",
+                "works.commercial.hunli.desc": "Record romantic wedding moments",
                 "works.commercial.geren.title": "Personal Event Photography",
-                "works.commercial.geren.desc": "Professional personal event coverage, record wonderful moments",
+                "works.commercial.geren.desc": "Professional personal event coverage",
                 "works.commercial.shangye.title": "Commercial Event Photography",
-                "works.commercial.shangye.desc": "Professional commercial event shooting, show brand charm",
-                "works.comiccon.changzhao.title": "Comic Con On-Site Photos",
-                "works.comiccon.changzhao.desc": "Capture wonderful moments at comic con, freeze the atmosphere",
+                "works.commercial.shangye.desc": "Professional commercial event shooting",
+                "works.comiccon.changzhao.title": "Comic Con On-Site",
+                "works.comiccon.changzhao.desc": "Capture comic con wonderful moments",
                 "works.comiccon.houqi.title": "Comic Con Post Production",
-                "works.comiccon.houqi.desc": "Professional post-processing to enhance photo quality",
+                "works.comiccon.houqi.desc": "Professional post-processing for on-site photos",
                 "modal.size.title": "Set Work Size",
                 "modal.size.width": "Width (px)",
                 "modal.size.width.placeholder": "Enter width",
                 "modal.size.height": "Height (px)",
                 "modal.size.height.placeholder": "Enter height",
                 "modal.delete.title": "Confirm Delete",
-                "modal.delete.desc": "Are you sure you want to delete this work? This action cannot be undone!",
-                "modal.delete.confirm": "Confirm Delete",
+                "modal.delete.desc": "Are you sure to delete? This cannot be undone!",
+                "modal.delete.confirm": "Delete",
                 "modal.confirm": "Confirm",
                 "modal.cancel": "Cancel",
-                "modal.tip.success": "Operation Success!",
+                "modal.tip.success": "Success!",
                 "about.title": "About Me",
                 "about.greeting": "Hello, I'm Steven",
-                "about.bio.1": "With seven years of photography experience, I specialize in portrait photography and maintain a passion for learning, honing my skills with every shot. I excel at cosplay, ancient style, and various event photography. With rich practical experience, I can accurately restore the texture of each character, delicately capture the elegance of ancient style, and earnestly freeze every warm and precious highlight moment in events. I always maintain a rigorous, meticulous, efficient, and professional attitude towards every shoot.",
-                "about.bio.2": "In addition, I also work on corporate promotional videos, restaurant environments, and food photography, adept at using light and shadow to highlight the texture of works. I am proficient in PS and LR for retouching and editing, and master various photography equipment, able to flexibly adapt to different shooting scenes and light requirements, living up to every trust with professional capabilities.",
-                "about.bio.3": "During shoots, I am willing to listen to everyone's ideas, patiently connect with every need, and professionally guide the shooting state to make everyone more relaxed and produce better photos. Over the years, I have led many shooting projects and gained recognition and trust from many clients with my solid professional abilities. In the future, I will continue to uphold ingenuity and keep moving forward, capturing every beauty and touch with professionalism and sincerity.",
-                "about.skills": "Skills: Portrait/Cosplay/Ancient Style/Events/Corporate Videos/Food Photography",
+                "about.bio.1": "With 7 years of photography experience, I specialize in portrait, cosplay, ancient style and event shooting. I accurately restore character texture, capture ancient elegance, and freeze precious moments with a rigorous and professional attitude.",
+                "about.bio.2": "I also do corporate promotional videos, restaurant and food shooting, good at using light and shadow to highlight texture. Proficient in PS, LR and various equipment, adaptable to different shooting scenes and light conditions.",
+                "about.bio.3": "I listen to clients' needs, guide shooting状态 patiently, and make everyone relaxed and photogenic. I have led many projects and won recognition. I will continue to uphold ingenuity and capture every beauty with professionalism and sincerity.",
+                "about.skills": "Skills: Portrait/Cosplay/Ancient/Event/Corporate Video/Food Shooting",
                 "about.experience": "7 Years Experience",
                 "about.phone": "Phone: 5168003413",
                 "about.email": "Email: wlyang119@gmail.com",
@@ -1426,368 +1239,362 @@
                 "booking.name": "Your Name",
                 "booking.name.placeholder": "Enter your name",
                 "booking.phone": "Phone",
-                "booking.phone.placeholder": "Enter your phone number",
+                "booking.phone.placeholder": "Enter your phone",
                 "booking.type": "Shoot Type",
                 "booking.type.placeholder": "Select shoot type",
-                "booking.type.portrait": "Portrait Shoot",
-                "booking.type.cosplay": "Cosplay Shoot",
-                "booking.type.ancient": "Ancient Style Shoot",
-                "booking.type.activity": "Event Shoot",
-                "booking.type.comiccon": "Comic Con Coverage",
-                "booking.type.commercial": "Corporate/Food Shoot",
-                "booking.type.other": "Other Shoots",
+                "booking.type.portrait": "Portrait",
+                "booking.type.cosplay": "Cosplay",
+                "booking.type.ancient": "Ancient Style",
+                "booking.type.activity": "Event",
+                "booking.type.comiccon": "Comic Con",
+                "booking.type.commercial": "Corporate Video/Food",
+                "booking.type.other": "Other",
                 "booking.date": "Preferred Date/Event Time",
                 "booking.message": "Shoot Requirements/Event Info",
-                "booking.message.placeholder": "Describe your needs/event name + location in detail",
-                "booking.submit": "Submit Booking",
+                "booking.message.placeholder": "Describe your needs/event name + location",
+                "booking.submit": "Submit",
                 "contact.title": "Contact Me",
-                "contact.desc": "If you like my works, want to book a shoot, commercial cooperation, event coverage, or have any photography-related questions, you can contact me through the following ways, and I will reply to you as soon as possible.",
+                "contact.desc": "If you like my works, want to book a shoot, commercial cooperation or have any photography questions, contact me via the following ways, I will reply as soon as possible.",
                 "contact.phone": "Phone: 5168003413",
                 "contact.wechat": "WeChat: SteveN_YanG_NYC",
                 "contact.email": "Email: wlyang119@gmail.com",
-                "footer.copyright": "© 2025 Steven Photography Studio. All rights reserved. | Phone: 5168003413 | WeChat: SteveN_YanG_NYC | Email: wlyang119@gmail.com"
+                "footer.copyright": "© 2025 Steven Photography Studio. All rights reserved | Phone: 5168003413 | WeChat: SteveN_YanG_NYC | Email: wlyang119@gmail.com"
             }
         };
 
-        // 子分类配置
-        const subCategories = {
-            cosplay: [
-                { key: 'zhenpian', text: 'works.filter.cosplay.zhenpian' },
-                { key: 'houqi', text: 'works.filter.cosplay.houqi' }
-            ],
-            commercial: [
-                { key: 'hunli', text: 'works.filter.commercial.hunli' },
-                { key: 'geren', text: 'works.filter.commercial.geren' },
-                { key: 'shangye', text: 'works.filter.commercial.shangye' }
-            ],
-            comiccon: [
-                { key: 'changzhao', text: 'works.filter.comiccon.changzhao' },
-                { key: 'houqi', text: 'works.filter.comiccon.houqi' }
-            ]
-        };
+        // ==================== 全局变量 ====================
+        let currentLang = 'zh';
+        let currentMainCategory = 'all';
+        let currentSubCategory = 'all';
+        let currentDeleteItem = null;
+        let currentSizeItem = null;
+        let worksData = []; // 作品数据（包含分类、图片、文字）
 
-        // 语言切换函数
-        function changeLanguage(lang) {
-            document.documentElement.lang = lang;
+        // ==================== 初始化 ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            initLang(); // 初始化语言
+            loadWorksData(); // 加载本地存储的作品数据
+            renderSubFilter(); // 渲染子分类
+            renderWorksList(); // 渲染作品列表
+            bindEvents(); // 绑定所有事件
+            checkAdminLogin(); // 检查管理员登录状态
+        });
+
+        // ==================== 1. 语言切换 ====================
+        function initLang() {
+            const langBtns = document.querySelectorAll('.lang-btn');
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    currentLang = this.dataset.lang;
+                    langBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    updateLang();
+                });
+            });
+            updateLang();
+        }
+
+        function updateLang() {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
+                if (translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
                 }
             });
             document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
                 const key = el.getAttribute('data-i18n-placeholder');
-                if (translations[lang][key]) {
-                    el.placeholder = translations[lang][key];
-                }
-            });
-            // 更新子分类按钮文本
-            updateSubFilterText(lang);
-        }
-
-        // 语言切换按钮事件
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                changeLanguage(btn.getAttribute('data-lang'));
-            });
-        });
-
-        // ==================== 2. 子分类筛选功能 ====================
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const subFilter = document.getElementById('subFilter');
-        const worksItems = document.querySelectorAll('.works-item');
-        let currentCategory = 'all';
-        let currentSubCategory = 'all';
-
-        // 更新子分类按钮文本
-        function updateSubFilterText(lang) {
-            document.querySelectorAll('.sub-filter-btn').forEach(btn => {
-                const key = btn.getAttribute('data-subfilter');
-                const textKey = btn.getAttribute('data-i18n');
-                if (textKey && translations[lang][textKey]) {
-                    btn.textContent = translations[lang][textKey];
+                if (translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
                 }
             });
         }
 
-        // 生成子分类按钮
-        function renderSubFilter(category) {
-            subFilter.innerHTML = '';
-            if (category === 'all' || !subCategories[category]) {
-                return;
-            }
-            // 添加“全部”子分类按钮
-            const allBtn = document.createElement('button');
-            allBtn.className = 'sub-filter-btn active';
-            allBtn.setAttribute('data-subfilter', 'all');
-            allBtn.setAttribute('data-i18n', 'works.filter.all');
-            allBtn.textContent = translations[document.documentElement.lang]['works.filter.all'];
-            subFilter.appendChild(allBtn);
-
-            // 生成对应主分类的子分类按钮
-            subCategories[category].forEach(sub => {
-                const btn = document.createElement('button');
-                btn.className = 'sub-filter-btn';
-                btn.setAttribute('data-subfilter', sub.key);
-                btn.setAttribute('data-i18n', sub.text);
-                btn.textContent = translations[document.documentElement.lang][sub.text];
-                subFilter.appendChild(btn);
-            });
-
-            // 子分类按钮点击事件
-            document.querySelectorAll('.sub-filter-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.sub-filter-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentSubCategory = btn.getAttribute('data-subfilter');
-                    filterWorks();
-                });
-            });
-        }
-
-        // 筛选作品
-        function filterWorks() {
-            worksItems.forEach(item => {
-                const itemCategory = item.getAttribute('data-category');
-                const itemSubCategory = item.getAttribute('data-subcategory');
-                
-                let show = true;
-                if (currentCategory !== 'all' && itemCategory !== currentCategory) {
-                    show = false;
-                }
-                if (currentSubCategory !== 'all' && itemSubCategory !== currentSubCategory) {
-                    show = false;
-                }
-                item.style.display = show ? 'block' : 'none';
-            });
-        }
-
-        // 主分类按钮点击事件
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentCategory = btn.getAttribute('data-filter');
-                currentSubCategory = 'all';
-                renderSubFilter(currentCategory);
-                filterWorks();
-            });
-        });
-
-        // ==================== 3. 【优化】管理员登录状态记忆 ====================
-        const ADMIN_USER = 'steven';
-        const ADMIN_PWD = '12345678';
-        const loginPage = document.getElementById('loginPage');
-        const loginForm = document.getElementById('loginForm');
-        const loginError = document.getElementById('loginError');
-        const body = document.body;
-
-        // 页面加载时检查登录状态
-        window.onload = function() {
-            // 检查是否有登录状态且未过期
-            const isLogged = localStorage.getItem('adminLogged') === 'true';
-            const expireTime = localStorage.getItem('adminExpire');
-            const now = new Date().getTime();
-
-            if (isLogged && expireTime && now < expireTime) {
-                // 已登录且未过期，直接显示管理功能
-                body.classList.add('admin-logged');
+        // ==================== 2. 本地存储操作（核心：保存/加载/删除作品） ====================
+        // 加载作品数据（从LocalStorage）
+        function loadWorksData() {
+            const saved = localStorage.getItem('steven_works');
+            if (saved) {
+                worksData = JSON.parse(saved);
             } else {
-                // 未登录或已过期，清除状态
-                localStorage.removeItem('adminLogged');
-                localStorage.removeItem('adminExpire');
+                // 初始默认数据（避免空页面）
+                worksData = [
+                    { category: 'cosplay', subcategory: 'zhenpian', src: 'https://picsum.photos/800/1000?random=9', title: 'Cosplay正片作品', desc: '还原角色灵魂与精彩瞬间' },
+                    { category: 'cosplay', subcategory: 'zhenpian', src: 'https://picsum.photos/800/1000?random=10', title: 'Cosplay正片作品', desc: '还原角色灵魂与精彩瞬间' },
+                    { category: 'cosplay', subcategory: 'houqi', src: 'https://picsum.photos/800/1000?random=11', title: 'Cosplay后期合成作品', desc: '专业后期合成，打造梦幻效果' },
+                    { category: 'commercial', subcategory: 'hunli', src: 'https://picsum.photos/800/1000?random=30', title: '婚礼摄影作品', desc: '记录浪漫婚礼瞬间，定格幸福时刻' },
+                    { category: 'commercial', subcategory: 'geren', src: 'https://picsum.photos/800/1000?random=31', title: '个人活动摄影作品', desc: '专业个人活动跟拍，记录精彩瞬间' },
+                    { category: 'commercial', subcategory: 'shangye', src: 'https://picsum.photos/800/1000?random=32', title: '商业活动摄影作品', desc: '专业商业活动拍摄，展现品牌魅力' },
+                    { category: 'comiccon', subcategory: 'changzhao', src: 'https://picsum.photos/800/1000?random=20', title: '漫展场照作品', desc: '捕捉漫展精彩瞬间，定格现场氛围' },
+                    { category: 'comiccon', subcategory: 'changzhao', src: 'https://picsum.photos/800/1000?random=21', title: '漫展场照作品', desc: '捕捉漫展精彩瞬间，定格现场氛围' },
+                    { category: 'comiccon', subcategory: 'houqi', src: 'https://picsum.photos/800/1000?random=22', title: '漫展场照后期合成作品', desc: '专业后期处理，提升场照质感' },
+                    { category: 'portrait', subcategory: 'all', src: 'https://picsum.photos/800/1000?random=2', title: '人像摄影作品', desc: '记录人物真实情绪与瞬间' },
+                    { category: 'documentary', subcategory: 'all', src: 'https://picsum.photos/800/1000?random=4', title: '古风摄影作品', desc: '记录古风雅致韵味与东方之美' }
+                ];
+                saveWorksData();
             }
+        }
+
+        // 保存作品数据（到LocalStorage）
+        function saveWorksData() {
+            localStorage.setItem('steven_works', JSON.stringify(worksData));
+        }
+
+        // ==================== 3. 分类筛选 ====================
+        // 子分类配置
+        const subCategories = {
+            portrait: [],
+            documentary: [],
+            commercial: ['hunli', 'geren', 'shangye'],
+            cosplay: ['zhenpian', 'houqi'],
+            comiccon: ['changzhao', 'houqi']
         };
 
-        // 登录表单提交
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const user = document.getElementById('adminUser').value.trim();
-            const pwd = document.getElementById('adminPwd').value.trim();
-            
-            if (user === ADMIN_USER && pwd === ADMIN_PWD) {
-                // 登录成功
-                loginPage.style.display = 'none';
-                body.classList.add('admin-logged');
-                // 保存登录状态7天
-                const expireTime = new Date().getTime() + 7*24*60*60*1000;
-                localStorage.setItem('adminLogged', 'true');
-                localStorage.setItem('adminExpire', expireTime);
-                showTip(translations[document.documentElement.lang]['modal.tip.success']);
-            } else {
-                // 登录失败
-                loginError.innerText = '账号或密码错误，请重新输入！';
-                setTimeout(() => { loginError.innerText = ''; }, 3000);
-            }
-        });
+        // 渲染子分类按钮
+        function renderSubFilter() {
+            const subFilter = document.getElementById('subFilter');
+            subFilter.innerHTML = '';
 
-        // ==================== 4. 头像更换功能 ====================
-        const avatarReplaceBtn = document.querySelector('.about-img .replace-btn');
-        const avatarReplace = document.getElementById('avatarReplace');
-        const avatarImg = document.querySelector('.about-img img');
-
-        avatarReplaceBtn.addEventListener('click', () => {
-            avatarReplace.click();
-        });
-
-        avatarReplace.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    avatarImg.src = event.target.result;
-                    showTip(translations[document.documentElement.lang]['modal.tip.success']);
-                    avatarReplace.value = ''; // 清空文件选择
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // ==================== 5. 封面图更换功能 ====================
-        const bannerReplaceBtn = document.getElementById('bannerReplaceBtn');
-        const bannerReplace = document.getElementById('bannerReplace');
-        const banner = document.querySelector('.banner');
-
-        // 点击按钮触发文件选择
-        bannerReplaceBtn.addEventListener('click', () => {
-            bannerReplace.click();
-        });
-
-        // 选择图片后更换封面
-        bannerReplace.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    // 更换封面背景
-                    banner.style.backgroundImage = `url(${event.target.result})`;
-                    // 提示更换成功
-                    showTip(translations[document.documentElement.lang]['modal.tip.success']);
-                    // 清空文件选择框，方便再次选择
-                    bannerReplace.value = '';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // ==================== 6. 作品上传功能修复 ====================
-        const uploadBtn = document.getElementById('uploadBtn');
-        const uploadInput = document.getElementById('uploadInput');
-        const worksList = document.getElementById('worksList');
-
-        // 点击上传按钮，触发文件选择
-        uploadBtn.addEventListener('click', () => {
-            uploadInput.click();
-        });
-
-        // 选择文件后，自动添加到作品列表
-        uploadInput.addEventListener('change', (e) => {
-            const files = e.target.files;
-            if (!files.length) return;
-
-            // 获取当前选中的分类（用于自动归类）
-            const currentCategory = document.querySelector('.filter-btn.active').getAttribute('data-filter') || 'all';
-            const currentSubCategory = document.querySelector('.sub-filter-btn.active')?.getAttribute('data-subfilter') || '';
-
-            Array.from(files).forEach(file => {
-                // 只处理图片
-                if (!file.type.startsWith('image/')) return;
-
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    // 创建新作品项
-                    const newWork = document.createElement('div');
-                    newWork.className = 'works-item';
-                    newWork.setAttribute('data-category', currentCategory === 'all' ? 'portrait' : currentCategory);
-                    if (currentSubCategory) {
-                        newWork.setAttribute('data-subcategory', currentSubCategory);
-                    }
-
-                    newWork.innerHTML = `
-                        <img src="${event.target.result}" alt="新上传作品">
-                        <div class="item-actions">
-                            <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
-                            <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
-                            <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
-                        </div>
-                        <div class="work-info">
-                            <div class="work-title" contenteditable="true">新作品</div>
-                            <div class="work-desc" contenteditable="true">点击编辑描述</div>
-                        </div>
-                    `;
-
-                    worksList.prepend(newWork); // 加到最前面
-                };
-                reader.readAsDataURL(file);
+            // 全部子分类按钮
+            const allBtn = document.createElement('button');
+            allBtn.className = 'sub-filter-btn active';
+            allBtn.dataset.subfilter = 'all';
+            allBtn.textContent = currentLang === 'zh' ? '全部' : 'All';
+            allBtn.addEventListener('click', function() {
+                currentSubCategory = 'all';
+                document.querySelectorAll('.sub-filter-btn').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                renderWorksList();
             });
+            subFilter.appendChild(allBtn);
 
-            // 提示上传成功
-            showTip(translations[document.documentElement.lang]['modal.tip.success']);
-            // 清空文件选择，方便再次上传
-            uploadInput.value = '';
-        });
-
-        // ==================== 7. 其他原有功能 ====================
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('nav');
-            nav.style.padding = window.scrollY > 100 ? '10px 0' : '20px 0';
-            nav.style.boxShadow = window.scrollY > 100 ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
-        });
-
-        // 移动端菜单
-        const menuBtn = document.querySelector('.menu-btn');
-        const navList = document.querySelector('.nav-list');
-        menuBtn.addEventListener('click', function() {
-            navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
-            navList.style.flexDirection = 'column';
-            navList.style.position = 'absolute';
-            navList.style.top = '70px';
-            navList.style.right = '20px';
-            navList.style.background = '#fff';
-            navList.style.padding = '20px';
-            navList.style.borderRadius = '2px';
-            navList.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
-            navList.style.gap = '20px';
-        });
-
-        // 作品大图预览
-        const modal = document.getElementById('modal');
-        const modalImg = document.getElementById('modal-img');
-        const closeModal = document.querySelector('.close-modal');
-
-        worksItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                if (!e.target.closest('.item-actions')) {
-                    modal.style.display = 'flex';
-                    modalImg.src = item.querySelector('img').src;
-                }
-            });
-        });
-
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
+            // 当前主分类的子分类
+            if (currentMainCategory !== 'all' && subCategories[currentMainCategory]) {
+                subCategories[currentMainCategory].forEach(sub => {
+                    const btn = document.createElement('button');
+                    btn.className = 'sub-filter-btn';
+                    btn.dataset.subfilter = sub;
+                    btn.textContent = translations[currentLang][`works.filter.${currentMainCategory}.${sub}`];
+                    btn.addEventListener('click', function() {
+                        currentSubCategory = sub;
+                        document.querySelectorAll('.sub-filter-btn').forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+                        renderWorksList();
+                    });
+                    subFilter.appendChild(btn);
+                });
             }
-        });
-
-        // 提示弹窗
-        const tipModal = document.getElementById('tipModal');
-        function showTip(message) {
-            tipModal.textContent = message;
-            tipModal.style.display = 'block';
-            setTimeout(() => { tipModal.style.display = 'none'; }, 2000);
         }
 
-        // 初始化
-        changeLanguage('zh');
-        renderSubFilter('all');
+        // 主分类切换
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentMainCategory = this.dataset.filter;
+                currentSubCategory = 'all';
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderSubFilter();
+                renderWorksList();
+            });
+        });
+
+        // ==================== 4. 作品渲染（核心：根据分类显示作品） ====================
+        function renderWorksList() {
+            const worksList = document.getElementById('worksList');
+            worksList.innerHTML = '';
+
+            // 筛选符合当前分类的作品
+            let filteredWorks = worksData;
+            if (currentMainCategory !== 'all') {
+                filteredWorks = filteredWorks.filter(work => work.category === currentMainCategory);
+            }
+            if (currentSubCategory !== 'all') {
+                filteredWorks = filteredWorks.filter(work => work.subcategory === currentSubCategory);
+            }
+
+            // 渲染作品项
+            filteredWorks.forEach((work, index) => {
+                const item = document.createElement('div');
+                item.className = 'works-item';
+                item.dataset.category = work.category;
+                item.dataset.subcategory = work.subcategory;
+                item.dataset.index = index; // 存储索引，用于删除/修改
+
+                item.innerHTML = `
+                    <img src="${work.src}" alt="作品">
+                    <div class="item-actions">
+                        <button class="action-btn delete-btn" title="删除作品"><i class="fas fa-trash"></i></button>
+                        <button class="action-btn size-btn" title="修改尺寸"><i class="fas fa-expand"></i></button>
+                        <button class="action-btn text-btn" title="修改文字"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="work-info">
+                        <div class="work-title" contenteditable="true">${work.title}</div>
+                        <div class="work-desc" contenteditable="true">${work.desc}</div>
+                    </div>
+                `;
+
+                // 绑定作品项事件（点击放大、删除、修改尺寸、修改文字）
+                bindWorkItemEvents(item, work, index);
+                worksList.appendChild(item);
+            });
+        }
+
+        // 绑定作品项事件
+        function bindWorkItemEvents(item, work, index) {
+            // 点击图片放大
+            item.querySelector('img').addEventListener('click', function() {
+                document.getElementById('modal').style.display = 'flex';
+                document.getElementById('modal-img').src = this.src;
+            });
+
+            // 删除按钮
+            item.querySelector('.delete-btn').addEventListener('click', function(e) {
+                e.stopPropagation();
+                currentDeleteItem = index;
+                document.getElementById('deleteModal').style.display = 'flex';
+            });
+
+            // 修改尺寸按钮
+            item.querySelector('.size-btn').addEventListener('click', function(e) {
+                e.stopPropagation();
+                currentSizeItem = item;
+                document.getElementById('sizeModal').style.display = 'flex';
+            });
+
+            // 修改文字（失焦后保存）
+            const titleEl = item.querySelector('.work-title');
+            const descEl = item.querySelector('.work-desc');
+            titleEl.addEventListener('blur', function() {
+                worksData[index].title = this.textContent;
+                saveWorksData();
+                showTip();
+            });
+            descEl.addEventListener('blur', function() {
+                worksData[index].desc = this.textContent;
+                saveWorksData();
+                showTip();
+            });
+        }
+
+        // ==================== 5. 上传作品（核心：自动归类+本地保存） ====================
+        function bindUploadEvent() {
+            const uploadBtn = document.getElementById('uploadBtn');
+            const uploadInput = document.getElementById('uploadInput');
+
+            uploadBtn.addEventListener('click', function() {
+                uploadInput.click();
+            });
+
+            uploadInput.addEventListener('change', function(e) {
+                const files = e.target.files;
+                if (!files.length) return;
+
+                // 遍历上传的文件，转为Base64并保存
+                Array.from(files).forEach(file => {
+                    if (!file.type.startsWith('image/')) return;
+
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        // 新作品数据（绑定当前选中的分类）
+                        const newWork = {
+                            category: currentMainCategory === 'all' ? 'portrait' : currentMainCategory, // 未选主分类默认人像
+                            subcategory: currentSubCategory,
+                            src: e.target.result, // Base64图片数据
+                            title: currentLang === 'zh' ? '新作品' : 'New Work',
+                            desc: currentLang === 'zh' ? '请编辑描述' : 'Edit description'
+                        };
+
+                        worksData.unshift(newWork); // 新增到顶部
+                        saveWorksData(); // 保存到本地
+                        renderWorksList(); // 重新渲染
+                        showTip();
+                    };
+                    reader.readAsDataURL(file);
+                });
+
+                uploadInput.value = ''; // 清空上传框
+            });
+        }
+
+        // ==================== 6. 删除作品（核心：同步更新本地存储） ====================
+        function bindDeleteEvent() {
+            document.getElementById('confirmDelete').addEventListener('click', function() {
+                if (currentDeleteItem !== null) {
+                    worksData.splice(currentDeleteItem, 1); // 删除对应索引的作品
+                    saveWorksData(); // 保存更新
+                    renderWorksList(); // 重新渲染
+                    document.getElementById('deleteModal').style.display = 'none';
+                    currentDeleteItem = null;
+                    showTip();
+                }
+            });
+
+            document.getElementById('cancelDelete').addEventListener('click', function() {
+                document.getElementById('deleteModal').style.display = 'none';
+                currentDeleteItem = null;
+            });
+        }
+
+        // ==================== 7. 其他事件绑定（关闭弹窗、修改尺寸、管理员登录等） ====================
+        function bindEvents() {
+            bindUploadEvent();
+            bindDeleteEvent();
+
+            // 关闭大图弹窗
+            document.querySelector('.close-modal').addEventListener('click', function() {
+                document.getElementById('modal').style.display = 'none';
+            });
+
+            // 关闭尺寸弹窗
+            document.getElementById('cancelSize').addEventListener('click', function() {
+                document.getElementById('sizeModal').style.display = 'none';
+                currentSizeItem = null;
+            });
+
+            // 确认修改尺寸
+            document.getElementById('confirmSize').addEventListener('click', function() {
+                const width = document.getElementById('widthInput').value;
+                const height = document.getElementById('heightInput').value;
+                if (currentSizeItem && width && height) {
+                    currentSizeItem.style.width = `${width}px`;
+                    currentSizeItem.style.height = `${height}px`;
+                    document.getElementById('sizeModal').style.display = 'none';
+                    currentSizeItem = null;
+                    showTip();
+                }
+            });
+
+            // 管理员登录
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const user = document.getElementById('adminUser').value;
+                const pwd = document.getElementById('adminPwd').value;
+                if (user === 'admin' && pwd === '123456') {
+                    localStorage.setItem('admin_logged', 'true');
+                    document.getElementById('loginPage').style.display = 'none';
+                    document.body.classList.add('admin-logged');
+                    document.getElementById('loginError').textContent = '';
+                } else {
+                    document.getElementById('loginError').textContent = currentLang === 'zh' ? '账号或密码错误' : 'Wrong username or password';
+                }
+            });
+        }
+
+        // 检查管理员登录状态
+        function checkAdminLogin() {
+            if (localStorage.getItem('admin_logged') === 'true') {
+                document.body.classList.add('admin-logged');
+                document.getElementById('loginPage').style.display = 'none';
+            } else {
+                document.getElementById('loginPage').style.display = 'flex';
+            }
+        }
+
+        // 显示操作提示
+        function showTip() {
+            const tip = document.getElementById('tipModal');
+            tip.style.display = 'block';
+            setTimeout(() => tip.style.display = 'none', 2000);
+        }
     </script>
 </body>
 </html>
